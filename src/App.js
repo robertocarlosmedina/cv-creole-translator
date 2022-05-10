@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { AiFillCopy } from "react-icons/ai";
 import { FaExchangeAlt, FaArrowRight } from "react-icons/fa";
+import { ImCross } from "react-icons/im"
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import Api from "./api";
 
@@ -16,10 +19,20 @@ function App() {
       : setLanguageOption("Cape Verdian Creole");
   };
 
+  const sourceSentenceHandler = (string) => {
+    setSourceSentence(string);
+    if (sourceSentence === "") setTranslation(null);
+  };
+
+  const removeSouceSentence = () => {
+    setSourceSentence("")
+    setTranslation(null)
+  }
+
   const getTranslation = async () => {
     let target_translation;
-    const source = languageOption === "Cape Verdian Creole" ? "cv": "en"
-    const target = source === "en" ? "cv": "en"
+    const source = languageOption === "Cape Verdian Creole" ? "cv" : "en";
+    const target = source === "en" ? "cv" : "en";
     try {
       Api.post(`/translate/${source}/${target}`, {
         sentence: sourceSentence,
@@ -35,6 +48,7 @@ function App() {
   const translateSentence = () => {
     console.log(sourceSentence);
     if (sourceSentence !== "") getTranslation();
+    else setTranslation(null);
   };
 
   return (
@@ -43,7 +57,7 @@ function App() {
       <div className='translation-conteiner'>
         <ul className='languagues-boxes'>
           <li className='language-display'>
-            <div>
+            <div className="input-area">
               <p className='language-selector'>{languageOption}</p>
               <p>
                 <textarea
@@ -52,9 +66,12 @@ function App() {
                   placeholder='Enter Text'
                   autoComplete='off'
                   value={sourceSentence}
-                  onChange={(event) => setSourceSentence(event.target.value)}
+                  onChange={(event) =>
+                    sourceSentenceHandler(event.target.value)
+                  }
                 />
               </p>
+              <ImCross onClick={removeSouceSentence} className="remove-text-icon"/>
             </div>
           </li>
           <li className='language-display controller-display'>
@@ -81,6 +98,11 @@ function App() {
                   translation ? "with-translation" : "no-translation"
                 }`}>
                 {translation ? translation : "Translation"}
+                {translation && (
+                  <CopyToClipboard text={translation}>
+                    <AiFillCopy className='clipboard-copy' />
+                  </CopyToClipboard>
+                )}
               </p>
             </div>
           </li>

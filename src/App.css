@@ -63,6 +63,12 @@
   margin: 0;
 }
 
+.arrows-ajust,
+.translation-icon,
+.remove-text-icon {
+  transition: all .2s ease-in-out;
+}
+
 .arrows-ajust {
   cursor: pointer;
   width: 13px;
@@ -72,12 +78,12 @@
   border-radius: 100%;
   background-color: #3d3d3d;
   color: var(--secundary-text-color);
-  transition: all .2s ease-in-out;
 }
 
 .arrows-ajust:hover {
   color: #ffffff;
   background-color: #505050;
+  transform: scale(1.1);
 }
 
 .translation-icon {
@@ -89,16 +95,19 @@
   padding: .5rem;
   background-color: var(--thert-text-color);
   border-radius: 100%;
-  transition: all .3s ease-in-out;
 }
 
 .translation-icon:hover {
   transform: scale(1.1);
 }
 
+.input-area {
+  position: relative;
+}
+
 .input-box,
 .output-box {
-  width: 12.3rem;
+  width: 11.3rem;
   height: 6rem;
   padding: .8rem;
   color: #ffffff;
@@ -106,9 +115,11 @@
 }
 
 .input-box {
+  position: relative;
   border-radius: 0;
   border: none;
   resize: none;
+  padding-right: 1.5rem;
   border-bottom: 1px solid #3d3d3d;
   background-color: transparent;
 }
@@ -118,13 +129,39 @@
   /* oranges! yey */
 }
 
+.remove-text-icon {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 3.5rem;
+  color: #a0a0a0;
+  right: 0;
+  cursor: pointer;
+}
+
+.remove-text-icon:hover {
+  color: #bebebe;
+}
+
 .output-box {
+  position: relative;
   height: auto;
-  min-height: 6rem;
+  min-height: 4rem;
   width: 12.5rem;
   text-align: left;
-  background-color: #3a3a3a;
+  background-color: #303030;
   margin-left: 0rem;
+  padding-bottom: 3rem;
+}
+
+.clipboard-copy {
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 1rem;
+  color: #a0a0a0;
+  left: .8rem;
 }
 
 .no-translation {
