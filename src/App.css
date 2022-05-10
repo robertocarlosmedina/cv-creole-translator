@@ -63,12 +63,6 @@
   margin: 0;
 }
 
-.arrows-ajust,
-.translation-icon,
-.remove-text-icon {
-  transition: all .2s ease-in-out;
-}
-
 .arrows-ajust {
   cursor: pointer;
   width: 13px;
@@ -139,10 +133,6 @@
   cursor: pointer;
 }
 
-.remove-text-icon:hover {
-  color: #bebebe;
-}
-
 .output-box {
   position: relative;
   height: auto;
@@ -162,6 +152,18 @@
   bottom: 1rem;
   color: #a0a0a0;
   left: .8rem;
+}
+
+.remove-text-icon:hover,
+.clipboard-copy:hover {
+  color: #bebebe;
+}
+
+.arrows-ajust,
+.translation-icon,
+.remove-text-icon,
+.clipboard-copy {
+  transition: all .2s ease-in-out;
 }
 
 .no-translation {
