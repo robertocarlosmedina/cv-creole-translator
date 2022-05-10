@@ -18,8 +18,10 @@ function App() {
 
   const getTranslation = async () => {
     let target_translation;
+    const source = languageOption === "Cape Verdian Creole" ? "cv": "en"
+    const target = source === "en" ? "cv": "en"
     try {
-      Api.post("/translate/cv/en", {
+      Api.post(`/translate/${source}/${target}`, {
         sentence: sourceSentence,
       }).then((res) => {
         target_translation = res.data.data[0].translation;
