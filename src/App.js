@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiFillCopy } from "react-icons/ai";
 import { FaExchangeAlt, FaArrowRight } from "react-icons/fa";
-import { ImCross } from "react-icons/im"
+import { ImCross } from "react-icons/im";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import Api from "./api";
@@ -25,9 +25,9 @@ function App() {
   };
 
   const removeSouceSentence = () => {
-    setSourceSentence("")
-    setTranslation(null)
-  }
+    setSourceSentence("");
+    setTranslation(null);
+  };
 
   const getTranslation = async () => {
     let target_translation;
@@ -57,7 +57,7 @@ function App() {
       <div className='translation-conteiner'>
         <ul className='languagues-boxes'>
           <li className='language-display'>
-            <div className="input-area">
+            <div className='input-area'>
               <p className='language-selector'>{languageOption}</p>
               <p>
                 <textarea
@@ -71,7 +71,12 @@ function App() {
                   }
                 />
               </p>
-              <ImCross onClick={removeSouceSentence} className="remove-text-icon"/>
+              {sourceSentence && (
+                <ImCross
+                  onClick={removeSouceSentence}
+                  className='remove-text-icon'
+                />
+              )}
             </div>
           </li>
           <li className='language-display controller-display'>
