@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { FaExchangeAlt } from "react-icons/fa";
+import { FaExchangeAlt, FaArrowRight } from "react-icons/fa";
 
-import Api from "./api"
+import Api from "./api";
 
 import "./App.css";
 
 function App() {
   const [languageOption, setLanguageOption] = useState("Cape Verdian Creole");
   const [translation, setTranslation] = useState(null);
-  const [sourceSenctence, setSourceSencente] = useState("");
+  const [sourceSentence, setSourceSentence] = useState();
 
   const languageOptionHandler = () => {
     languageOption === "Cape Verdian Creole"
@@ -16,28 +16,23 @@ function App() {
       : setLanguageOption("Cape Verdian Creole");
   };
 
-  const sourceSenctenceHandler = (event) => {
-    setSourceSencente(event.target.value);
-    if(languageOption !== "")
-      getTranslation()
-    else
-      setTranslation(null)
-  };
-
   const getTranslation = async () => {
     let target_translation;
     try {
       Api.post("/translate/cv/en", {
-        sentence: sourceSenctence
+        sentence: sourceSentence,
       }).then((res) => {
-        target_translation = res.data.data[0].translation
-        console.log(target_translation)
-        if(target_translation)
-          setTranslation(target_translation)
+        target_translation = res.data.data[0].translation;
+        if (target_translation) setTranslation(target_translation);
       });
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const translateSentence = () => {
+    console.log(sourceSentence);
+    if (sourceSentence !== "") getTranslation();
   };
 
   return (
@@ -51,8 +46,11 @@ function App() {
               <p>
                 <textarea
                   className='input-box'
+                  spellCheck='false'
                   placeholder='Enter Text'
-                  onChange={sourceSenctenceHandler}
+                  autoComplete='off'
+                  value={sourceSentence}
+                  onChange={(event) => setSourceSentence(event.target.value)}
                 />
               </p>
             </div>
@@ -63,6 +61,10 @@ function App() {
                 className='arrows-ajust'
                 onClick={languageOptionHandler}
               />
+              <FaArrowRight
+                onClick={translateSentence}
+                className='translation-icon'
+              />
             </div>
           </li>
           <li className='language-display'>
@@ -72,7 +74,12 @@ function App() {
                   ? "English"
                   : "Cape Verdian Creole"}
               </p>
-              <p className={`output-box ${translation ? "with-translation" : "no-translation"}`}>{ translation ? translation : "Translation"}</p>
+              <p
+                className={`output-box ${
+                  translation ? "with-translation" : "no-translation"
+                }`}>
+                {translation ? translation : "Translation"}
+              </p>
             </div>
           </li>
         </ul>
