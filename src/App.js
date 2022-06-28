@@ -17,6 +17,7 @@ function App() {
     languageOption === "Cape Verdian Creole"
       ? setLanguageOption("English")
       : setLanguageOption("Cape Verdian Creole");
+    removeSouceSentence()
   };
 
   const sourceSentenceHandler = (string) => {
@@ -30,12 +31,17 @@ function App() {
   };
 
   const getTranslation = async () => {
+
     let target_translation;
     const source = languageOption === "Cape Verdian Creole" ? "cv" : "en";
     const target = source === "en" ? "cv" : "en";
+
     try {
-      Api.post(`/translate/${source}/${target}`, {
+      Api.post(`/translate`, {
         sentence: sourceSentence,
+        model: "transformer", 
+        source: source, 
+        target: target
       }).then((res) => {
         target_translation = res.data.data[0].translation;
         if (target_translation) setTranslation(target_translation);
@@ -43,6 +49,7 @@ function App() {
     } catch (error) {
       console.log(error.message);
     }
+
   };
 
   const translateSentence = () => {
