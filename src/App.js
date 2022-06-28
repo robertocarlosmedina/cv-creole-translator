@@ -16,7 +16,10 @@ function App() {
   const [translatorModels, setTranslatorModels] = useState([]);
   const [modelTranslator, setModelTranslator] = useState("gru")
 
-
+  /**
+   * To get all the available models in order to perform
+   * the translations.
+   */
   useEffect(() => {
     try {
       Api.get(`/translate`).then((res) => {
@@ -27,7 +30,11 @@ function App() {
       console.log(error.message);
     }
   }, []);
-
+  
+  /**
+   * To controll the switching on the source and target
+   * languague.
+   */
   const languageOptionHandler = () => {
     languageOption === "Cape Verdian Creole"
       ? setLanguageOption("English")
@@ -35,20 +42,37 @@ function App() {
     removeSouceSentence()
   };
 
+  /**
+   * Handle the source sentences changes.
+   * @param {*} string 
+   */
   const sourceSentenceHandler = (string) => {
     setSourceSentence(string);
     if (sourceSentence === "") setTranslation(null);
   };
 
+  /**
+   * To remove both the source and target sentence 
+   * from the boxes.
+   */
   const removeSouceSentence = () => {
     setSourceSentence("");
     setTranslation(null);
   };
-
+  
+  /**
+   * Method to handle the model selector event,
+   * or more detailed the users choice.
+   * @param {*} event 
+   */
   const modelNameHandler = (event)  => {
     setModelTranslator(event.target.value)
   }
 
+  /**
+   * Method to translate a sentence according to the model
+   * and the direction.
+   */
   const getTranslation = async () => {
 
     let target_translation;
@@ -71,6 +95,10 @@ function App() {
 
   };
 
+  /**
+   * Method auxiliar to valid the sentence before making it's 
+   * translation.
+   */
   const translateSentence = () => {
     if (sourceSentence !== "") getTranslation();
     else setTranslation(null);
@@ -83,10 +111,7 @@ function App() {
         <select className="model-selector" value={modelTranslator} onChange={modelNameHandler}>
           {translatorModels.map((model, index) =>
             <option key={index} value={model.name}>
-              {/* <p className="model-name"> */}
                 {model.name}: {model.parameters} params
-                {/* <span className="model-parameters">{model.parameters}</span>
-              </p> */}
             </option>
           )}
         </select>
