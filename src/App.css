@@ -6,7 +6,7 @@
   margin: 0 auto;
   width: 20rem;
   font-size: 1.5rem;
-  margin-top: 8vw;
+  margin-top: 5vw;
 }
 
 .translation-conteiner {
@@ -22,12 +22,27 @@
   background-color: var(--card-background-color-1);
 }
 
+.model-selector{
+  width: 30.6rem;
+  height: 2.4rem;
+  padding: .4rem .4rem .4rem .5rem;
+  border: 2.2px solid var(--thert-text-color);
+  border-radius: var(--border-radius);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: .8rem;
+  background-color: transparent;
+  margin-bottom: -1rem;
+  margin-top: 1.5rem;
+}
+
 .languagues-boxes {
   display: inline-flex;
 }
 
 .language-display {
-  margin-right: 3rem;
+  margin-right: 2.5rem;
   list-style: none;
   display: inline-block;
 }
@@ -67,7 +82,8 @@
   cursor: pointer;
   width: 13px;
   height: 13px;
-  margin: 1.3rem .3rem 0rem -2.7rem;
+  margin: 1.33rem 0rem 0rem -2.18rem;
+  position: absolute;
   padding: .5rem;
   border-radius: 100%;
   background-color: #3d3d3d;
@@ -81,14 +97,16 @@
 }
 
 .translation-icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   position: absolute;
   cursor: pointer;
-  margin: 6.9rem 0rem 0rem -2.3rem;
+  margin: 6.9rem -2rem 0rem -2.3rem;
+  margin-right: -2rem !important;
   padding: .5rem;
   background-color: var(--thert-text-color);
   border-radius: 100%;
+  z-index: 10;
 }
 
 .translation-icon:hover {
@@ -175,8 +193,13 @@
 }
 
 @media screen and (max-width: 799px) {
+
   .languagues-boxes {
     display: inline-block;
+  }
+
+  .model-selector{
+    width: 13.9rem;
   }
 
   .controller-display div {
@@ -185,12 +208,12 @@
   }
 
   .arrows-ajust {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    margin: -.3rem 0rem -.1rem -3.6rem;
   }
 
   .translation-icon {
-    position: relative;
-    margin: 0rem 1rem -.1rem 0rem;
+    margin: -.4rem -.3rem -.1rem -1.2rem;
   }
 }

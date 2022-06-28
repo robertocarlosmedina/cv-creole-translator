@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillCopy } from "react-icons/ai";
 import { FaExchangeAlt, FaArrowRight } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
@@ -9,9 +9,24 @@ import Api from "./api";
 import "./App.css";
 
 function App() {
+
   const [languageOption, setLanguageOption] = useState("Cape Verdian Creole");
   const [translation, setTranslation] = useState(null);
   const [sourceSentence, setSourceSentence] = useState();
+  const [translatorModels, setTranslatorModels] = useState([]);
+  const [modelTranslator, setModelTranslator] = useState("gru")
+
+
+  useEffect(() => {
+    try {
+      Api.get(`/translate`).then((res) => {
+        const models = res.data.data.translator_models;
+        if (models) setTranslatorModels(models);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
 
   const languageOptionHandler = () => {
     languageOption === "Cape Verdian Creole"
@@ -30,6 +45,10 @@ function App() {
     setTranslation(null);
   };
 
+  const modelNameHandler = (event)  => {
+    setModelTranslator(event.target.value)
+  }
+
   const getTranslation = async () => {
 
     let target_translation;
@@ -39,7 +58,7 @@ function App() {
     try {
       Api.post(`/translate`, {
         sentence: sourceSentence,
-        model: "transformer", 
+        model: modelTranslator, 
         source: source, 
         target: target
       }).then((res) => {
@@ -53,7 +72,6 @@ function App() {
   };
 
   const translateSentence = () => {
-    console.log(sourceSentence);
     if (sourceSentence !== "") getTranslation();
     else setTranslation(null);
   };
@@ -62,6 +80,17 @@ function App() {
     <div className='App'>
       <h1 className='header-title'>Cape Verdean Creole Translator</h1>
       <div className='translation-conteiner'>
+        <select className="model-selector" value={modelTranslator} onChange={modelNameHandler}>
+          {translatorModels.map((model, index) =>
+            <option key={index} value={model.name}>
+              {/* <p className="model-name"> */}
+                {model.name}: {model.parameters} params
+                {/* <span className="model-parameters">{model.parameters}</span>
+              </p> */}
+            </option>
+          )}
+        </select>
+        <br />
         <ul className='languagues-boxes'>
           <li className='language-display'>
             <div className='input-area'>
