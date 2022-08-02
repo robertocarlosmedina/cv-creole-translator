@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+#  Cape Verdean Creole Translator Frontend test App
+### _Machine Translation System (MT) Front-end Test App to test the different models run with human testing when doing MT tasks_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This is a React APP with an interface similar to [Google Translate] this MT system was made with the intention of testing the whole performance of the project when doing the translation using the configuration of different models.
 
-In the project directory, you can run:
+> This project was made with the intention of being an integral part of my final final project.
+> All aspects addressed in the implementation were made according to the needs of the project as a whole.
+> Cape Verdean Creole is the mother language of Cape Verde, which is not an official language and is not well represented and known around the world. Therefore, it is a great honor to carry out studies and projects that contribute to its recognition and dissemination.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Once a sentence has been entered in the interface and according to the chosen model and also the source and target language, it will perform the task of translating this sentence. All this with the help of a [Restfull API] that is also an integral part of the project as a whole
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dependencies
 
-### `npm run build`
+To install the dependencies run:
+```sh
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Execution
+To launch the APP on the browser execute: 
+```sh
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### All parts of the project into a whole
+The whole project is divided into parts and each part has an essential function in it.
+They are distributed as shown in the subtopics below.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Models implementation
+This are the model used in the whole project:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [Transformer model implementation]
+- [GRU model implementation]
+- [LSTM model implementation]
+- [Models Training Graphs Generator]
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+#### Frontend test platform
+This is a React App made to test all the translations made by the models, similar to the App [Google Translator]. 
+Projects related to using the frontend application can be found at:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [MT Models API implementation]
+- [Cape Verdean Creole Translator Frontend test App]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+#### Dataset
+The dataset used to train, validate and test the model was the [CrioleSet dataset].
+If the dataset is not in the project while executing any of the action commands, it will be downloaded and added to the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [CrioleSet datset]
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### License
 
-### Making a Progressive Web App
+MIT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Feel free to use and get in touch with any questions.**
 
-### Advanced Configuration
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   [Google Translate]: <https://translate.google.com>
+   [Transformer model implementation]: <https://github.com/robertocarlosmedina/attention-transformer-translator>
+   [GRU model implementation]: <https://github.com/robertocarlosmedina/rnn-gru-attention-translator>
+   [LSTM model implementation]: <https://github.com/robertocarlosmedina/rnn-lstm-translator>
+   [MT Models API implementation]: <https://github.com/robertocarlosmedina/machine-translation-models-api>
+   [Restfull API]: <https://github.com/robertocarlosmedina/machine-translation-models-api>
+   [CrioleSet datset]: <https://github.com/robertocarlosmedina/crioleSet>
+   [Cape Verdean Creole Translator Frontend test App]: <https://github.com/robertocarlosmedina/cv-creole-translator>
+   [Models Training Graphs Generator]: <https://github.com/robertocarlosmedina/models-graphs-generator>
+   [Google Translator]: <https://translate.google.com>
