@@ -28,6 +28,7 @@ To launch the APP on the browser execute:
 npm start
 ```
 
+**NOTE:** It's worth noting that the API supporting this app must be in the running state for. It can be found here: [Restfull API]
 
 ### All parts of the project into a whole
 The whole project is divided into parts and each part has an essential function in it.
